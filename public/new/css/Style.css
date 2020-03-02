@@ -1,0 +1,16 @@
+.navbar-brand-box {
+    color: #247fe1;
+    font-size: 18px;
+    padding: 20px;
+}
+
+.text-center.mb-5 {
+    color: #247fe1;
+    font-size: 30px;
+}
+
+.bg-login {
+    background: url(../images/bg-login.jpg);
+    background-position: unset !important;
+    background-size: cover;
+}

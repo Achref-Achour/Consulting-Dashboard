@@ -1,0 +1,106 @@
+{% extends 'layout/backLayout.html.twig' %}
+{% block stylesheets %}
+{{ parent() }}
+   <link href={{ asset('new/plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.css')}} rel="stylesheet" type="text/css" />
+   <link href={{ asset('new/plugins/daterangepicker/daterangepicker.css')}} rel="stylesheet" type="text/css" />
+   <link href={{ asset('new/plugins/select2/select2.min.css')}} rel="stylesheet" type="text/css" />
+   <link href={{ asset('new/plugins/switchery/switchery.min.css')}} rel="stylesheet" type="text/css" />
+   <link href={{ asset('new/plugins/bootstrap-colorpicker/bootstrap-colorpicker.min.css')}} rel="stylesheet" type="text/css" />
+   <link href={{ asset('new/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css')}} rel="stylesheet" type="text/css" />
+
+{% endblock %}
+{% block body %}
+<div class="main-content">
+
+            <div class="page-content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="d-flex align-items-center min-vh-100">
+                                <div class="w-100 d-block bg-white shadow-lg rounded my-5">
+                                    <div class="row">
+                                        <div class="col-lg-5 d-none d-lg-block  rounded-left">
+                                            <img class="card-img-top img-fluid" src="{{ asset('new/uploads/')}}{{ temoignage.img }}"  alt="Card image cap">
+                                        </div>
+                                        <div class="col-lg-7">
+                                            <div class="p-5">
+                                               
+                                                <div class="row">
+                        <div class="col-xl-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    
+                                    <form id="UpTemoignage" action="{{ path('UpdateTemoignage',{id: temoignage.id})}}" method="POST" enctype="multipart/form-data">
+                                        <div class="form-group">
+                                            <label for="simpleinput">Nom</label>
+                                            <input type="text" name="nom" id="nom" class="form-control" placeholder="Enter your text" value="{{ temoignage.nom }}">
+                                        </div>
+
+                                         <div class="form-group">
+                                            <label for="simpleinput">Titre</label>
+                                            <input type="text" name="titre" id="titre" class="form-control" placeholder="Enter your text" value="{{ temoignage.titre }}">
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="simpleinput">Message</label>
+                                            <input type="textarea" name="message" id="Message" class="form-control" placeholder="Enter your text" value="{{ temoignage.message }}">
+                                        </div>
+                                      
+
+                                        <div class="form-group">
+                                            <label>File Browser</label>
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="customFile" name="img">
+                                                <label class="custom-file-label"  for="customFile">Choose file</label>
+                                            </div>            
+                                        </div>
+                                       
+                                     <button class="btn btn-primary waves-effect waves-light" type="submit" >Submit Form</button>
+                                    </form>
+                                </div>
+                                <!-- end card-body-->
+                            </div>
+                            <!-- end card -->
+
+                            
+                            </div> <!-- end card-->
+</div>
+                                               
+                                                <!-- end row -->
+                                            </div> <!-- end .padding-5 -->
+                                        </div> <!-- end col -->
+                                    </div> <!-- end row -->
+                                </div> <!-- end .w-100 -->
+                            </div> <!-- end .d-flex -->
+                        </div> <!-- end col-->
+                    </div> <!-- end row -->
+                </div>
+                <!-- end container -->
+            </div>
+  </div>  </div>
+
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+    <!-- Plugins js -->
+    <script src={{ asset('new/plugins/autonumeric/autoNumeric-min.js')}}></script>
+    <script src={{ asset('new/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js')}}></script>
+    <script src={{ asset('new/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js')}}></script>
+    <script src={{ asset('new/plugins/moment/moment.js')}}></script>
+    <script src={{ asset('new/plugins/daterangepicker/daterangepicker.js')}}></script>
+    <script src={{ asset('new/plugins/select2/select2.min.js')}}></script>
+
+    <script src={{ asset('new/plugins/switchery/switchery.min.js')}}></script>
+    <script src={{ asset('new/plugins/bootstrap-colorpicker/bootstrap-colorpicker.min.js')}}></script>
+    <script src={{ asset('new/plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js')}}></script>
+
+
+    <!-- Custom Js -->
+    <script src={{ asset('new/pages/advanced-plugins-demo.js')}}></script>
+ 
+
+    <!-- App js -->
+    <script src={{ asset('new/js/theme.js')}}></script>
+
+{% endblock %}

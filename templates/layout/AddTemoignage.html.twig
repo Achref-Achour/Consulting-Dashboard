@@ -1,0 +1,145 @@
+{% extends 'layout/backLayout.html.twig' %}
+{% block stylesheets %}
+{{ parent() }}
+   <link href={{ asset('new/plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.css')}} rel="stylesheet" type="text/css" />
+   <link href={{ asset('new/plugins/daterangepicker/daterangepicker.css')}} rel="stylesheet" type="text/css" />
+   <link href={{ asset('new/plugins/select2/select2.min.css')}} rel="stylesheet" type="text/css" />
+   <link href={{ asset('new/plugins/switchery/switchery.min.css')}} rel="stylesheet" type="text/css" />
+   <link href={{ asset('new/plugins/bootstrap-colorpicker/bootstrap-colorpicker.min.css')}} rel="stylesheet" type="text/css" />
+   <link href={{ asset('new/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css')}} rel="stylesheet" type="text/css" />
+   <style>
+    .error{
+        color:red;
+        font-size:14px;
+    }
+   </style>
+
+{% endblock %}
+{% block body %}
+<div class="main-content">
+
+            <div class="page-content">
+                <div class="container-fluid">
+
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-flex align-items-center justify-content-between">
+                                <h4 class="mb-0 font-size-18">Ajouter un Témoignage </h4>
+
+                               
+                                
+                            </div>
+                        </div>
+                    </div>     
+                    <!-- end page title -->
+
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    {% for message in app.flashes('success')  %}
+                                        <div class="alert alert-success">
+                                            {{ message }}
+                                        </div>
+                                    {% endfor %}
+                                    {% for message in app.flashes('danger')  %}
+                                        <div class="alert alert-danger">
+                                            {{ message }}
+                                        </div>
+                                    {% endfor %}
+                                    <form id="addTemoignage" action="{{ path('TemForm')}}" method="POST" enctype="multipart/form-data">
+                                        <div class="form-group">
+                                            <label for="simpleinput">Nom</label>
+                                            <input type="text" name="nom" id="nom" class="form-control" placeholder="Enter your text" required>
+                                        </div>
+
+                                         <div class="form-group">
+                                            <label for="simpleinput">titre</label>
+                                            <input type="text" name="titre" id="titre" class="form-control" placeholder="Enter your text" required>
+                                        </div>
+                                        
+                                        {# <div class="form-group">
+                                            <label for="simpleinput">Message</label>
+                                            <input type="textarea" name="message" id="message" class="form-control" placeholder="Enter your text" required>
+                                        </div> #}
+                                        <div class="form-group">
+                                                <label for="exampleFormControlTextarea1">Message</label>
+                                                <textarea class="form-control" name="message" id="message" rows="3" required></textarea>
+                                            </div>
+
+                                        <div class="form-group">
+                                            <label>File Browser</label>
+                                            <div class="custom-file">
+                                                <input type="file" name="img" class="custom-file-input" id="img" required>
+                                                <label class="custom-file-label" for="customFile">Choose file</label>
+                                            </div>            
+                                        </div>
+                                       
+                                     <button class="btn btn-primary waves-effect waves-light" type="submit">Submit Form</button>   
+                                    </form>
+                                </div>
+                                <!-- end card-body-->
+                            </div>
+                            <!-- end card -->
+
+                            
+                            </div> <!-- end card-->
+</div>
+
+{% endblock %}
+{% block javascripts %}
+{{ parent() }}
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+
+    <script>
+    $(document).ready(function () {
+        
+    $("#addTemoignage").validate({
+            rules: {
+                nom: {
+                "required": true,
+                "minlength": 2,
+                "maxlength": 20
+                },
+                 titre: {
+                "required": true,
+                "minlength": 2,
+                "maxlength": 100
+                },
+                 message : {
+                "required": true,
+                "minlength": 2,
+                "maxlength": 255
+                },
+                 img : {
+                "required": true
+                }
+            },
+            messages: {
+                nom: {
+                    "required": "Champ obligatoire*",
+                    "minlength": "Minimum 2 caractéres",
+                    "maxlength": "Maximum 20 caractéres"
+                },
+                titre: {
+                    "required": "Champ obligatoire*",
+                    "minlength": "Minimum 10 caractéres",
+                    "maxlength": "Maximum 100 caractéres"
+                },
+                message: {
+                    "required": "Champ obligatoire*",
+                    "minlength": "Minimum 50 caractéres",
+                    "maxlength": "Maximum 255 caractéres"
+                },
+                 img: {
+                    "required": "Champ obligatoire*"
+                }
+            }
+        });
+    });   
+    </script>
+  
+
+{% endblock %}

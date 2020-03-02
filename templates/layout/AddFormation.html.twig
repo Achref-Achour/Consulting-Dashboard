@@ -1,0 +1,110 @@
+{% extends 'layout/backLayout.html.twig' %}
+{% block stylesheets %}
+{{ parent() }}
+   <link href={{ asset('new/plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.css')}} rel="stylesheet" type="text/css" />
+   <link href={{ asset('new/plugins/daterangepicker/daterangepicker.css')}} rel="stylesheet" type="text/css" />
+   <link href={{ asset('new/plugins/select2/select2.min.css')}} rel="stylesheet" type="text/css" />
+   <link href={{ asset('new/plugins/switchery/switchery.min.css')}} rel="stylesheet" type="text/css" />
+   <link href={{ asset('new/plugins/bootstrap-colorpicker/bootstrap-colorpicker.min.css')}} rel="stylesheet" type="text/css" />
+   <link href={{ asset('new/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css')}} rel="stylesheet" type="text/css" />
+
+{% endblock %}
+{% block body %}
+<div class="main-content">
+
+            <div class="page-content">
+                <div class="container-fluid">
+
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-flex align-items-center justify-content-between">
+                                <h4 class="mb-0 font-size-18">Ajouter une formation</h4>
+
+                               
+                                
+                            </div>
+                        </div>
+                    </div>     
+                    <!-- end page title -->
+
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    {% for message in app.flashes('success')  %}
+                                        <div class="alert alert-success">
+                                            {{ message }}
+                                        </div>
+                                    {% endfor %}
+
+                                    <form id="addFormation" action="{{ path('AddFormation')}}" method="POST" enctype="multipart/form-data">
+                                        <div class="form-group">
+                                            <label for="simpleinput">Titre</label>
+                                            <input type="text" name="titre" id="titre" class="form-control" placeholder="Enter your text">
+                                        </div>
+
+                                         <div class="form-group">
+                                            <label for="simpleinput">Formation</label>
+                                            <input type="text" name="formation" id="formation" class="form-control" placeholder="Enter your text">
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="simpleinput">Intervenants</label>
+                                            <input type="text" name="intervenants" id="intervenants" class="form-control" placeholder="Enter your text">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="simpleinput">Adresse</label>
+                                            <input type="text" name="adresse" id="adresse" class="form-control" placeholder="Enter your text">
+                                        </div>
+
+                                       <div class="form-group">
+                                        <label>Date</label>
+                                        <input type="date" name="date"  class="form-control"  data-date-autoclose="true">
+                                    </div>
+
+                                        <div class="form-group">
+                                            <label>File Browser</label>
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="customFile" name="img">
+                                                <label class="custom-file-label" for="customFile">Choose file</label>
+                                            </div>            
+                                        </div>
+                                       
+                                     <button class="btn btn-primary waves-effect waves-light" type="submit">Submit Form</button>   
+                                    </form>
+                                </div>
+                                <!-- end card-body-->
+                            </div>
+                            <!-- end card -->
+
+                            
+                            </div> <!-- end card-->
+</div>
+
+{% endblock %}
+{% block javascripts %}
+{{ parent() }}
+ 
+
+    <!-- Plugins js -->
+    <script src={{ asset('new/plugins/autonumeric/autoNumeric-min.js')}}></script>
+    <script src={{ asset('new/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js')}}></script>
+    <script src={{ asset('new/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js')}}></script>
+    <script src={{ asset('new/plugins/moment/moment.js')}}></script>
+    <script src={{ asset('new/plugins/daterangepicker/daterangepicker.js')}}></script>
+    <script src={{ asset('new/plugins/select2/select2.min.js')}}></script>
+
+    <script src={{ asset('new/plugins/switchery/switchery.min.js')}}></script>
+    <script src={{ asset('new/plugins/bootstrap-colorpicker/bootstrap-colorpicker.min.js')}}></script>
+    <script src={{ asset('new/plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js')}}></script>
+
+
+    <!-- Custom Js -->
+    <script src={{ asset('new/pages/advanced-plugins-demo.js')}}></script>
+ 
+
+    <!-- App js -->
+    <script src={{ asset('new/js/theme.js')}}></script>
+
+{% endblock %}

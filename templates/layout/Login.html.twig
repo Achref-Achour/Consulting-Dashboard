@@ -1,0 +1,83 @@
+{# {% extends 'layout/backLayout.html.twig' %} #}
+{% block body %}
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+            <!-- App css -->
+            <link href={{ asset('new/css/bootstrap.min.css') }} rel="stylesheet" type="text/css"/>
+            <link href={{ asset('new/css/icons.min.css') }} rel="stylesheet" type="text/css"/>
+            <link href={{ asset('new/css/theme.min.css') }} rel="stylesheet" type="text/css"/>
+            <link href={{ asset('new/css/style.css') }} rel="stylesheet" type="text/css"/>
+            <link href={{ asset('new/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css') }} rel="stylesheet"
+                  type="text/css"/>
+        {% endblock %}
+    </head>
+    <style>
+        .error {color: red}
+    </style>
+    <body>
+
+    <div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="d-flex align-items-center min-vh-100">
+                        <div class="w-100 d-block bg-white shadow-lg rounded my-5">
+                            <div class="row">
+                                <div class="col-lg-5 d-none d-lg-block bg-login rounded-left"></div>
+                                <div class="col-lg-7">
+                                    <div class="p-5">
+                                        <div class="text-center mb-5">
+                                                            <span>
+                                                                Consulting Bergeyron
+                                                            </span>
+                                        </div>
+                                        <h1 class="h5 mb-1">Welcome Back!</h1>
+                                        <p class="text-muted mb-4">Enter your email address and password to access admin
+                                            panel.</p>
+                                        <form class="user" action="{{ path('login') }}" method="post">
+                                            {% if error %}
+                                            <span class="error" {{ error.messageKey }}></span>
+                                            {% endif %}
+                                            <div class="form-group">
+                                                <input  class="form-control form-control-user"
+                                                       id="exampleInputEmail" placeholder="{{ lastUserName }}" name="_username">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" id="password" class="form-control form-control-user"
+                                                       id="exampleInputPassword" placeholder="Password" name="_password">
+                                            </div>
+                                                <button type="submit"
+                                                   class="btn btn-success btn-block waves-effect waves-light"> Log In </button>
+                                        </form>
+
+                                        <div class="row mt-4">
+                                            <div class="col-12 text-center">
+                                                <p class="text-muted mb-2"><a href="{{ path('ChangePassword') }}"
+                                                                              class="text-muted font-weight-medium ml-1">Mot
+                                                        de pase oublié?</a></p>
+                                            </div> <!-- end col -->
+                                        </div>
+                                        <!-- end row -->
+                                    </div> <!-- end .padding-5 -->
+                                </div> <!-- end col -->
+                            </div> <!-- end row -->
+                        </div> <!-- end .w-100 -->
+                    </div> <!-- end .d-flex -->
+                </div> <!-- end col-->
+            </div> <!-- end row -->
+        </div>
+        <!-- end container -->
+    </div>
+
+    {% block javascripts %}
+      
+
+
+    {% endblock %}
+    </body>
+    </html>
+
+{% endblock %}
